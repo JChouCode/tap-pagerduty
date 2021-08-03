@@ -499,6 +499,9 @@ class OncallsStream(PagerdutyStream):
                     # Loop through page records
                     for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                         for record in page.get(self.tap_stream_id):
+                            # Check invalid oncall record
+                            if (not record.get(self.replication_key)):
+                                continue
                             # Record timestamp
                             record_replication_key_dtime = datetime.strptime(
                                 record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
