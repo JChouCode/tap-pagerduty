@@ -1,6 +1,6 @@
 import inspect
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import ClassVar, Dict, List, Optional
 from dateutil import parser
 
@@ -54,7 +54,7 @@ class PagerdutyStream:
             if param not in self.params.keys():
                 if param == 'until':
                     self.params.update(
-                        {"until": datetime.utcnow().isoformat()})
+                        {"until": datetime.now(timezone.utc).isoformat()})
                 else:
                     raise RuntimeError(
                         f"Parameter '{param}' required but not supplied for /{self.tap_stream_id} endpoint.")
