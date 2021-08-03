@@ -42,7 +42,7 @@ develop:
 prod-env:
 	@python3 -m venv ./.venvs/tap-pagerduty
 	@source ./.venvs/tap-pagerduty/bin/activate && \
-	pip3 install tap-pagerduty && \
+	pip3 install . && \
 	deactivate
 	@python3 -m venv ./.venvs/target-stitch
 	@source ./.venvs/target-stitch/bin/activate && \
