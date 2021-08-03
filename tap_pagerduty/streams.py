@@ -38,21 +38,25 @@ class PagerdutyStream:
                                                               valid_replication_keys=self.valid_replication_keys,
                                                               replication_method=self.replication_method)
 
-        config_stream_params = config.get('streams', {}).get(self.tap_stream_id)
+        config_stream_params = config.get(
+            'streams', {}).get(self.tap_stream_id)
 
         if config_stream_params is not None:
             for key in config_stream_params.keys():
                 if key not in self.valid_params:
-                    raise RuntimeError(f"/{self.tap_stream_id} endpoint does not support '{key}' parameter.")
+                    raise RuntimeError(
+                        f"/{self.tap_stream_id} endpoint does not support '{key}' parameter.")
 
             self.params.update(config_stream_params)
 
         for param in self.required_params:
             if param not in self.params.keys():
                 if param == 'until':
-                    self.params.update({"until": datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')})
+                    self.params.update({"until": datetime.strftime(
+                        datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')})
                 else:
-                    raise RuntimeError(f"Parameter '{param}' required but not supplied for /{self.tap_stream_id} endpoint.")
+                    raise RuntimeError(
+                        f"Parameter '{param}' required but not supplied for /{self.tap_stream_id} endpoint.")
 
     def get(self, key: str):
         '''Custom get method so that Singer can
@@ -180,12 +184,15 @@ class IncidentsStream(PagerdutyStream):
                                                          default=None)
 
         if current_bookmark is not None:
-            current_bookmark_dtime = datetime.strptime(current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
+            current_bookmark_dtime = datetime.strptime(
+                current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
         else:
             current_bookmark_dtime = None
 
-        since_dtime = datetime.strptime(self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
-        until_dtime = datetime.strptime(self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
+        since_dtime = datetime.strptime(
+            self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
+        until_dtime = datetime.strptime(
+            self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
         request_range_limit = timedelta(days=179)
 
         running_bookmark_dtime = None
@@ -200,7 +207,8 @@ class IncidentsStream(PagerdutyStream):
                     self.params.update(range)
                     for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                         for record in page.get(self.tap_stream_id):
-                            record_replication_key_dtime = datetime.strptime(record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
+                            record_replication_key_dtime = datetime.strptime(
+                                record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
 
                             substream_params = {
                                 "limit": 100,
@@ -209,7 +217,8 @@ class IncidentsStream(PagerdutyStream):
                             }
                             record['log_entries'] = []
                             for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}/{record.get('id')}/log_entries", params=substream_params):
-                                record['log_entries'].extend(page.get('log_entries'))
+                                record['log_entries'].extend(
+                                    page.get('log_entries'))
 
                             record['alerts'] = []
                             for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}/{record.get('id')}/alerts", params=substream_params):
@@ -218,20 +227,26 @@ class IncidentsStream(PagerdutyStream):
                             if self.replication_method == 'INCREMENTAL':
                                 if (current_bookmark_dtime is None) or (record_replication_key_dtime >= current_bookmark_dtime):
                                     with singer.Transformer() as transformer:
-                                        transformed_record = transformer.transform(data=record, schema=self.schema)
-                                        singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                        transformed_record = transformer.transform(
+                                            data=record, schema=self.schema)
+                                        singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                                        ), record=transformed_record)
                                         counter.increment()
-                                        running_bookmark_dtime = self.update_bookmark(running_bookmark_dtime, record_replication_key_dtime)
+                                        running_bookmark_dtime = self.update_bookmark(
+                                            running_bookmark_dtime, record_replication_key_dtime)
                             else:
                                 with singer.Transformer() as transformer:
-                                    transformed_record = transformer.transform(data=record, schema=self.schema)
-                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                    transformed_record = transformer.transform(
+                                        data=record, schema=self.schema)
+                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                                    ), record=transformed_record)
                                     counter.increment()
 
                     since_dtime += request_range_limit
 
         if self.replication_method == 'INCREMENTAL':
-            running_bookmark_str = datetime.strftime(running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
+            running_bookmark_str = datetime.strftime(
+                running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
             singer.bookmarks.write_bookmark(state=self.state,
                                             tap_stream_id=self.tap_stream_id,
                                             key=self.replication_key,
@@ -262,8 +277,10 @@ class EscalationPoliciesStream(PagerdutyStream):
                 for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                     for record in page.get(self.tap_stream_id):
                         with singer.Transformer() as transformer:
-                            transformed_record = transformer.transform(data=record, schema=self.schema)
-                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                            transformed_record = transformer.transform(
+                                data=record, schema=self.schema)
+                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                            ), record=transformed_record)
                             counter.increment()
 
 
@@ -286,14 +303,15 @@ class ServicesStream(PagerdutyStream):
         super().__init__(config, state)
 
     def sync(self):
-
         with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                     for record in page.get(self.tap_stream_id):
                         with singer.Transformer() as transformer:
-                            transformed_record = transformer.transform(data=record, schema=self.schema)
-                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                            transformed_record = transformer.transform(
+                                data=record, schema=self.schema)
+                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                            ), record=transformed_record)
                             counter.increment()
 
 
@@ -304,7 +322,8 @@ class NotificationsStream(PagerdutyStream):
     replication_key: ClassVar[str] = 'started_at'
     valid_replication_keys: ClassVar[List[str]] = ['started_at']
     replication_method: ClassVar[str] = 'INCREMENTAL'
-    valid_params: ClassVar[List[str]] = ['time_zone', 'since', 'until', 'filter', 'include']
+    valid_params: ClassVar[List[str]] = [
+        'time_zone', 'since', 'until', 'filter', 'include']
     required_params: ClassVar[List[str]] = ['since', 'until']
 
     def __init__(self, config, state, **kwargs):
@@ -317,12 +336,15 @@ class NotificationsStream(PagerdutyStream):
                                                          default=None)
 
         if current_bookmark is not None:
-            current_bookmark_dtime = datetime.strptime(current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
+            current_bookmark_dtime = datetime.strptime(
+                current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
         else:
             current_bookmark_dtime = None
 
-        since_dtime = datetime.strptime(self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
-        until_dtime = datetime.strptime(self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
+        since_dtime = datetime.strptime(
+            self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
+        until_dtime = datetime.strptime(
+            self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
         request_range_limit = timedelta(days=89)
 
         running_bookmark_dtime = None
@@ -337,26 +359,181 @@ class NotificationsStream(PagerdutyStream):
                     self.params.update(range)
                     for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                         for record in page.get(self.tap_stream_id):
-                            record_replication_key_dtime = datetime.strptime(record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
+                            record_replication_key_dtime = datetime.strptime(
+                                record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
                             if (current_bookmark_dtime is None) or (record_replication_key_dtime >= current_bookmark_dtime):
                                 with singer.Transformer() as transformer:
-                                    transformed_record = transformer.transform(data=record, schema=self.schema)
-                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                    transformed_record = transformer.transform(
+                                        data=record, schema=self.schema)
+                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                                    ), record=transformed_record)
                                     counter.increment()
-                                    running_bookmark_dtime = self.update_bookmark(running_bookmark_dtime, record_replication_key_dtime)
+                                    running_bookmark_dtime = self.update_bookmark(
+                                        running_bookmark_dtime, record_replication_key_dtime)
 
                     since_dtime += request_range_limit
 
-        running_bookmark_str = datetime.strftime(running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
+        running_bookmark_str = datetime.strftime(
+            running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
         singer.bookmarks.write_bookmark(state=self.state,
                                         tap_stream_id=self.tap_stream_id,
                                         key=self.replication_key,
                                         val=running_bookmark_str)
 
 
+class SchedulesStream(PagerdutyStream):
+    tap_stream_id: ClassVar[str] = 'schedules'
+    stream: ClassVar[str] = 'schedules'
+    key_properties: ClassVar[str] = 'id'
+    valid_replication_keys: ClassVar[List[str]] = []
+    replication_method: ClassVar[str] = 'FULL_TABLE'
+    valid_params: ClassVar[List[str]] = [
+        'include[]',
+        'query'
+    ]
+    required_params: ClassVar[List[str]] = []
+
+    def __init__(self, config, state, **kwargs):
+        super().__init__(config, state)
+
+    def sync(self):
+        with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"):
+            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
+                for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
+                    for record in page.get(self.tap_stream_id):
+                        with singer.Transformer() as transformer:
+                            transformed_record = transformer.transform(
+                                data=record, schema=self.schema)
+                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                            ), record=transformed_record)
+                            counter.increment()
+
+
+class UsersStream(PagerdutyStream):
+    tap_stream_id: ClassVar[str] = 'users'
+    stream: ClassVar[str] = 'users'
+    key_properties: ClassVar[str] = 'id'
+    valid_replication_keys: ClassVar[List[str]] = []
+    replication_method: ClassVar[str] = 'FULL_TABLE'
+    valid_params: ClassVar[List[str]] = [
+        'include[]',
+        'team_ids[]',
+        'query'
+    ]
+    required_params: ClassVar[List[str]] = []
+
+    def __init__(self, config, state, **kwargs):
+        super().__init__(config, state)
+
+    def sync(self):
+        with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"):
+            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
+                for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
+                    for record in page.get(self.tap_stream_id):
+                        with singer.Transformer() as transformer:
+                            transformed_record = transformer.transform(
+                                data=record, schema=self.schema)
+                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                            ), record=transformed_record)
+                            counter.increment()
+
+
+class OncallsStream(PagerdutyStream):
+    tap_stream_id: ClassVar[str] = 'oncalls'
+    stream: ClassVar[str] = 'oncalls'
+    key_properties: ClassVar[str] = 'id'
+    replication_key: ClassVar[str] = 'start'
+    valid_replication_keys: ClassVar[List[str]] = ['start']
+    replication_method: ClassVar[str] = 'INCREMENTAL'
+    valid_params: ClassVar[List[str]] = [
+        'since',
+        'until',
+        'time_zone',
+        'earliest',
+        'user_ids[]',
+        'schedule_ids[]',
+        'escalation_policy_ids[]'
+    ]
+    required_params: ClassVar[List[str]] = ['since', 'until']
+
+    def __init__(self, config, state, **kwargs):
+        super().__init__(config, state)
+
+    def sync(self):
+        # Get current bookmark
+        current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
+                                                         tap_stream_id=self.tap_stream_id,
+                                                         key=self.replication_key,
+                                                         default=None)
+
+        if current_bookmark is not None:
+            current_bookmark_dtime = datetime.strptime(
+                current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
+        else:
+            current_bookmark_dtime = None
+
+        # Get since, until as datetime
+        since_dtime = datetime.strptime(
+            self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
+        until_dtime = datetime.strptime(
+            self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
+
+        # Max request range limit for PagerDuty API
+        request_range_limit = timedelta(days=179)
+
+        # Bookmark for this run
+        running_bookmark_dtime = None
+
+        with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"):
+            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
+                while since_dtime < until_dtime:
+                    # Update params for get request
+                    range = {
+                        "offset": 0,  # Reset the offset each time.
+                        "since": datetime.strftime(since_dtime, '%Y-%m-%dT%H:%M:%SZ'),
+                        "until": datetime.strftime(min(since_dtime + request_range_limit, until_dtime), '%Y-%m-%dT%H:%M:%SZ'),
+                        "time_zone": "America/Los_Angeles"  # Tz database timezone
+                    }
+                    self.params.update(range)
+
+                    # Loop through page records
+                    for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
+                        for record in page.get(self.tap_stream_id):
+                            # Record timestamp
+                            record_replication_key_dtime = datetime.strptime(
+                                record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
+                            # Incremental replication
+                            if (current_bookmark_dtime is None) or (record_replication_key_dtime >= current_bookmark_dtime):
+                                with singer.Transformer() as transformer:
+                                    # Transform record data into schema
+                                    transformed_record = transformer.transform(
+                                        data=record, schema=self.schema)
+                                    # Write record to stdin
+                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
+                                    ), record=transformed_record)
+                                    counter.increment()
+                                    # Update bookmark with time of last record written
+                                    running_bookmark_dtime = self.update_bookmark(
+                                        running_bookmark_dtime, record_replication_key_dtime)
+
+                    # Increment by max range limit for PagerDuty API
+                    since_dtime += request_range_limit
+
+            # Update bookmark after finishing extraction
+            running_bookmark_str = datetime.strftime(
+                running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
+            singer.bookmarks.write_bookmark(state=self.state,
+                                            tap_stream_id=self.tap_stream_id,
+                                            key=self.replication_key,
+                                            val=running_bookmark_str)
+
+
 AVAILABLE_STREAMS = {
     IncidentsStream,
     ServicesStream,
     NotificationsStream,
-    EscalationPoliciesStream
+    EscalationPoliciesStream,
+    SchedulesStream,
+    OncallsStream,
+    UsersStream,
 }
