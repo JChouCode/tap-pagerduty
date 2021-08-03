@@ -1,7 +1,8 @@
 import inspect
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import ClassVar, Dict, List, Optional
+from dateutil import parser
 
 import backoff
 import requests
@@ -52,8 +53,8 @@ class PagerdutyStream:
         for param in self.required_params:
             if param not in self.params.keys():
                 if param == 'until':
-                    self.params.update({"until": datetime.strftime(
-                        datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')})
+                    self.params.update(
+                        {"until": datetime.now(timezone.utc).isoformat()})
                 else:
                     raise RuntimeError(
                         f"Parameter '{param}' required but not supplied for /{self.tap_stream_id} endpoint.")
@@ -184,15 +185,12 @@ class IncidentsStream(PagerdutyStream):
                                                          default=None)
 
         if current_bookmark is not None:
-            current_bookmark_dtime = datetime.strptime(
-                current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
+            current_bookmark_dtime = parser.parse(current_bookmark)
         else:
             current_bookmark_dtime = None
 
-        since_dtime = datetime.strptime(
-            self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
-        until_dtime = datetime.strptime(
-            self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
+        since_dtime = parser.parse(self.params.get("since"))
+        until_dtime = parser.parse(self.params.get("until"))
         request_range_limit = timedelta(days=179)
 
         running_bookmark_dtime = None
@@ -201,14 +199,14 @@ class IncidentsStream(PagerdutyStream):
                 while since_dtime < until_dtime:
                     range = {
                         "offset": 0,  # Reset the offset each time.
-                        "since": datetime.strftime(since_dtime, '%Y-%m-%dT%H:%M:%SZ'),
-                        "until": datetime.strftime(min(since_dtime + request_range_limit, until_dtime), '%Y-%m-%dT%H:%M:%SZ')
+                        "since": since_dtime.isoformat(),
+                        "until": min((since_dtime + request_range_limit).isoformat(), until_dtime.isoformat()),
                     }
                     self.params.update(range)
                     for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                         for record in page.get(self.tap_stream_id):
-                            record_replication_key_dtime = datetime.strptime(
-                                record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
+                            record_replication_key_dtime = parser.parse(
+                                record.get(self.replication_key))
 
                             substream_params = {
                                 "limit": 100,
@@ -245,8 +243,7 @@ class IncidentsStream(PagerdutyStream):
                     since_dtime += request_range_limit
 
         if self.replication_method == 'INCREMENTAL':
-            running_bookmark_str = datetime.strftime(
-                running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
+            running_bookmark_str = running_bookmark_dtime.isoformat()
             singer.bookmarks.write_bookmark(state=self.state,
                                             tap_stream_id=self.tap_stream_id,
                                             key=self.replication_key,
@@ -336,15 +333,12 @@ class NotificationsStream(PagerdutyStream):
                                                          default=None)
 
         if current_bookmark is not None:
-            current_bookmark_dtime = datetime.strptime(
-                current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
+            current_bookmark_dtime = parser.parse(current_bookmark)
         else:
             current_bookmark_dtime = None
 
-        since_dtime = datetime.strptime(
-            self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
-        until_dtime = datetime.strptime(
-            self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
+        since_dtime = parser.parse(self.params.get("since"))
+        until_dtime = parser.parse(self.params.get("until"))
         request_range_limit = timedelta(days=89)
 
         running_bookmark_dtime = None
@@ -353,14 +347,14 @@ class NotificationsStream(PagerdutyStream):
                 while since_dtime < until_dtime:
                     range = {
                         "offset": 0,  # Reset the offset each time.
-                        "since": datetime.strftime(since_dtime, '%Y-%m-%dT%H:%M:%SZ'),
-                        "until": datetime.strftime(min(since_dtime + request_range_limit, until_dtime), '%Y-%m-%dT%H:%M:%SZ')
+                        "since": since_dtime.isoformat(),
+                        "until": min((since_dtime + request_range_limit).isoformat(), until_dtime.isoformat()),
                     }
                     self.params.update(range)
                     for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}", params=self.params):
                         for record in page.get(self.tap_stream_id):
-                            record_replication_key_dtime = datetime.strptime(
-                                record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
+                            record_replication_key_dtime = parser.parse(
+                                record.get(self.replication_key))
                             if (current_bookmark_dtime is None) or (record_replication_key_dtime >= current_bookmark_dtime):
                                 with singer.Transformer() as transformer:
                                     transformed_record = transformer.transform(
@@ -373,8 +367,7 @@ class NotificationsStream(PagerdutyStream):
 
                     since_dtime += request_range_limit
 
-        running_bookmark_str = datetime.strftime(
-            running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
+        running_bookmark_str = running_bookmark_dtime.isoformat()
         singer.bookmarks.write_bookmark(state=self.state,
                                         tap_stream_id=self.tap_stream_id,
                                         key=self.replication_key,
@@ -467,16 +460,13 @@ class OncallsStream(PagerdutyStream):
                                                          default=None)
 
         if current_bookmark is not None:
-            current_bookmark_dtime = datetime.strptime(
-                current_bookmark, '%Y-%m-%dT%H:%M:%SZ')
+            current_bookmark_dtime = parser.parse(current_bookmark)
         else:
             current_bookmark_dtime = None
 
         # Get since, until as datetime
-        since_dtime = datetime.strptime(
-            self.params.get("since"), '%Y-%m-%dT%H:%M:%SZ')
-        until_dtime = datetime.strptime(
-            self.params.get("until"), '%Y-%m-%dT%H:%M:%SZ')
+        since_dtime = parser.parse(self.params.get("since"))
+        until_dtime = parser.parse(self.params.get("until"))
 
         # Max request range limit for PagerDuty API
         request_range_limit = timedelta(days=179)
@@ -490,9 +480,8 @@ class OncallsStream(PagerdutyStream):
                     # Update params for get request
                     range = {
                         "offset": 0,  # Reset the offset each time.
-                        "since": datetime.strftime(since_dtime, '%Y-%m-%dT%H:%M:%SZ'),
-                        "until": datetime.strftime(min(since_dtime + request_range_limit, until_dtime), '%Y-%m-%dT%H:%M:%SZ'),
-                        "time_zone": "America/Los_Angeles"  # Tz database timezone
+                        "since": since_dtime.isoformat(),
+                        "until": min((since_dtime + request_range_limit).isoformat(), until_dtime.isoformat()),
                     }
                     self.params.update(range)
 
@@ -503,8 +492,8 @@ class OncallsStream(PagerdutyStream):
                             if (not record.get(self.replication_key)):
                                 continue
                             # Record timestamp
-                            record_replication_key_dtime = datetime.strptime(
-                                record.get(self.replication_key), '%Y-%m-%dT%H:%M:%SZ')
+                            record_replication_key_dtime = parser.parse(
+                                record.get(self.replication_key))
                             # Incremental replication
                             if (current_bookmark_dtime is None) or (record_replication_key_dtime >= current_bookmark_dtime):
                                 with singer.Transformer() as transformer:
@@ -523,8 +512,7 @@ class OncallsStream(PagerdutyStream):
                     since_dtime += request_range_limit
 
             # Update bookmark after finishing extraction
-            running_bookmark_str = datetime.strftime(
-                running_bookmark_dtime, '%Y-%m-%dT%H:%M:%SZ')
+            running_bookmark_str = running_bookmark_dtime.isoformat()
             singer.bookmarks.write_bookmark(state=self.state,
                                             tap_stream_id=self.tap_stream_id,
                                             key=self.replication_key,
