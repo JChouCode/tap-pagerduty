@@ -7,143 +7,82 @@
       "key_properties": "id",
       "schema": {
         "properties": {
+          "id": {
+            "type": ["null", "string"]
+          },
           "start": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "format": "date-time",
+            "type": ["null", "string"]
           },
           "end": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "format": "date-time",
+            "type": ["null", "string"]
           },
           "escalation_level": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": ["null", "integer"]
           },
           "escalation_policy": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "user": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "schedule": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "oncalls",
@@ -153,62 +92,49 @@
           "metadata": {
             "table-key-properties": "id",
             "forced-replication-method": "INCREMENTAL",
-            "valid-replication-keys": [
-              "start"
-            ],
-            "inclusion": "available"
+            "valid-replication-keys": ["start"],
+            "inclusion": "available",
+            "selected": true
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "start"
-          ],
+          "breadcrumb": ["properties", "id"],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": ["properties", "start"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "end"
-          ],
+          "breadcrumb": ["properties", "end"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "escalation_level"
-          ],
+          "breadcrumb": ["properties", "escalation_level"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "escalation_policy"
-          ],
+          "breadcrumb": ["properties", "escalation_policy"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "user"
-          ],
+          "breadcrumb": ["properties", "user"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "schedule"
-          ],
+          "breadcrumb": ["properties", "schedule"],
           "metadata": {
             "inclusion": "available"
           }
@@ -222,226 +148,118 @@
       "schema": {
         "properties": {
           "id": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "type": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "self": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "html_url": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "name": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "email": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "time_zone": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "color": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "role": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "avatar_url": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "description": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "invitation_sent": {
-            "type": [
-              "null",
-              "boolean"
-            ]
+            "type": ["null", "boolean"]
           },
           "job_title": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "teams": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "contact_methods": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "notification_rules": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "users",
@@ -456,154 +274,103 @@
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "id"
-          ],
+          "breadcrumb": ["properties", "id"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "summary"
-          ],
+          "breadcrumb": ["properties", "summary"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "type"
-          ],
+          "breadcrumb": ["properties", "type"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "self"
-          ],
+          "breadcrumb": ["properties", "self"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "html_url"
-          ],
+          "breadcrumb": ["properties", "html_url"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "name"
-          ],
+          "breadcrumb": ["properties", "name"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "email"
-          ],
+          "breadcrumb": ["properties", "email"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "time_zone"
-          ],
+          "breadcrumb": ["properties", "time_zone"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "color"
-          ],
+          "breadcrumb": ["properties", "color"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "role"
-          ],
+          "breadcrumb": ["properties", "role"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "avatar_url"
-          ],
+          "breadcrumb": ["properties", "avatar_url"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "description"
-          ],
+          "breadcrumb": ["properties", "description"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "invitation_sent"
-          ],
+          "breadcrumb": ["properties", "invitation_sent"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "job_title"
-          ],
+          "breadcrumb": ["properties", "job_title"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "teams"
-          ],
+          "breadcrumb": ["properties", "teams"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "contact_methods"
-          ],
+          "breadcrumb": ["properties", "contact_methods"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "notification_rules"
-          ],
+          "breadcrumb": ["properties", "notification_rules"],
           "metadata": {
             "inclusion": "available"
           }
@@ -617,190 +384,100 @@
       "schema": {
         "properties": {
           "id": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "type": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "self": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "html_url": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "time_zone": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "name": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "description": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "escalation_policies": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "users": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "teams": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "schedules",
@@ -815,100 +492,67 @@
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "id"
-          ],
+          "breadcrumb": ["properties", "id"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "summary"
-          ],
+          "breadcrumb": ["properties", "summary"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "type"
-          ],
+          "breadcrumb": ["properties", "type"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "self"
-          ],
+          "breadcrumb": ["properties", "self"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "html_url"
-          ],
+          "breadcrumb": ["properties", "html_url"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "time_zone"
-          ],
+          "breadcrumb": ["properties", "time_zone"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "name"
-          ],
+          "breadcrumb": ["properties", "name"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "description"
-          ],
+          "breadcrumb": ["properties", "description"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "escalation_policies"
-          ],
+          "breadcrumb": ["properties", "escalation_policies"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "users"
-          ],
+          "breadcrumb": ["properties", "users"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "teams"
-          ],
+          "breadcrumb": ["properties", "teams"],
           "metadata": {
             "inclusion": "available"
           }
@@ -923,73 +567,40 @@
       "schema": {
         "properties": {
           "id": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "type": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "started_at": {
             "format": "date-time",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "address": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "user": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "notifications",
@@ -999,53 +610,36 @@
           "metadata": {
             "table-key-properties": "id",
             "forced-replication-method": "INCREMENTAL",
-            "valid-replication-keys": [
-              "started_at"
-            ],
+            "valid-replication-keys": ["started_at"],
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "id"
-          ],
+          "breadcrumb": ["properties", "id"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "type"
-          ],
+          "breadcrumb": ["properties", "type"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "started_at"
-          ],
+          "breadcrumb": ["properties", "started_at"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "address"
-          ],
+          "breadcrumb": ["properties", "address"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "user"
-          ],
+          "breadcrumb": ["properties", "user"],
           "metadata": {
             "inclusion": "available"
           }
@@ -1059,372 +653,198 @@
       "schema": {
         "properties": {
           "id": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "type": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "self": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "html_url": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "name": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "description": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "auto_resolve_timeout": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": ["null", "integer"]
           },
           "acknowledgement_timeout": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": ["null", "integer"]
           },
           "created_at": {
             "format": "date-time",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "status": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "last_incident_timestamp": {
             "format": "date-time",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "alert_creation": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "alert_grouping": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "alert_grouping_timeout": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": ["null", "integer"]
           },
           "integrations": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "escalation_policy": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "teams": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "incident_urgency_rule": {
             "properties": {
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "during_support_hours": {
                 "properties": {
                   "type": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
+                    "type": ["null", "string"]
                   },
                   "urgency": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
+                    "type": ["null", "string"]
                   }
                 },
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": ["null", "object"]
               },
               "outside_support_hours": {
                 "properties": {
                   "type": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
+                    "type": ["null", "string"]
                   },
                   "urgency": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
+                    "type": ["null", "string"]
                   }
                 },
-                "type": [
-                  "null",
-                  "object"
-                ]
+                "type": ["null", "object"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "support_hours": {
             "properties": {
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "time_zone": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "start_time": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "end_time": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "days_of_week": {
                 "items": {
-                  "type": [
-                    "null",
-                    "integer"
-                  ]
+                  "type": ["null", "integer"]
                 },
-                "type": [
-                  "null",
-                  "array"
-                ]
+                "type": ["null", "array"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "scheduled_actions": {
             "items": {
               "properties": {
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "at": {
                   "properties": {
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "name": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "to_urgency": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "services",
@@ -1439,190 +859,127 @@
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "id"
-          ],
+          "breadcrumb": ["properties", "id"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "type"
-          ],
+          "breadcrumb": ["properties", "type"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "summary"
-          ],
+          "breadcrumb": ["properties", "summary"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "self"
-          ],
+          "breadcrumb": ["properties", "self"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "html_url"
-          ],
+          "breadcrumb": ["properties", "html_url"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "name"
-          ],
+          "breadcrumb": ["properties", "name"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "description"
-          ],
+          "breadcrumb": ["properties", "description"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "auto_resolve_timeout"
-          ],
+          "breadcrumb": ["properties", "auto_resolve_timeout"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "acknowledgement_timeout"
-          ],
+          "breadcrumb": ["properties", "acknowledgement_timeout"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "created_at"
-          ],
+          "breadcrumb": ["properties", "created_at"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "status"
-          ],
+          "breadcrumb": ["properties", "status"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "last_incident_timestamp"
-          ],
+          "breadcrumb": ["properties", "last_incident_timestamp"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "alert_creation"
-          ],
+          "breadcrumb": ["properties", "alert_creation"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "alert_grouping"
-          ],
+          "breadcrumb": ["properties", "alert_grouping"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "alert_grouping_timeout"
-          ],
+          "breadcrumb": ["properties", "alert_grouping_timeout"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "integrations"
-          ],
+          "breadcrumb": ["properties", "integrations"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "escalation_policy"
-          ],
+          "breadcrumb": ["properties", "escalation_policy"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "teams"
-          ],
+          "breadcrumb": ["properties", "teams"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "incident_urgency_rule"
-          ],
+          "breadcrumb": ["properties", "incident_urgency_rule"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "support_hours"
-          ],
+          "breadcrumb": ["properties", "support_hours"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "scheduled_actions"
-          ],
+          "breadcrumb": ["properties", "scheduled_actions"],
           "metadata": {
             "inclusion": "available"
           }
@@ -1636,216 +993,114 @@
       "schema": {
         "properties": {
           "id": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "type": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "self": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "html_url": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "name": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "description": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "num_loops": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": ["null", "integer"]
           },
           "escalation_rules": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "escalation_delay_in_minutes": {
-                  "type": [
-                    "null",
-                    "integer"
-                  ]
+                  "type": ["null", "integer"]
                 },
                 "targets": {
                   "items": {
                     "properties": {
                       "id": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "summary": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "type": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "self": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "html_url": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       }
                     },
-                    "type": [
-                      "null",
-                      "object"
-                    ]
+                    "type": ["null", "object"]
                   },
-                  "type": [
-                    "null",
-                    "array"
-                  ]
+                  "type": ["null", "array"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "services": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "teams": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "escalation_policies",
@@ -1860,100 +1115,67 @@
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "id"
-          ],
+          "breadcrumb": ["properties", "id"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "type"
-          ],
+          "breadcrumb": ["properties", "type"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "summary"
-          ],
+          "breadcrumb": ["properties", "summary"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "self"
-          ],
+          "breadcrumb": ["properties", "self"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "html_url"
-          ],
+          "breadcrumb": ["properties", "html_url"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "name"
-          ],
+          "breadcrumb": ["properties", "name"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "description"
-          ],
+          "breadcrumb": ["properties", "description"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "num_loops"
-          ],
+          "breadcrumb": ["properties", "num_loops"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "escalation_rules"
-          ],
+          "breadcrumb": ["properties", "escalation_rules"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "services"
-          ],
+          "breadcrumb": ["properties", "services"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "teams"
-          ],
+          "breadcrumb": ["properties", "teams"],
           "metadata": {
             "inclusion": "available"
           }
@@ -1968,940 +1190,499 @@
       "schema": {
         "properties": {
           "id": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "type": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "self": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "html_url": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "incident_number": {
-            "type": [
-              "null",
-              "integer"
-            ]
+            "type": ["null", "integer"]
           },
           "created_at": {
             "format": "date-time",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "status": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "title": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "incident_key": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "service": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "priority": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "assignments": {
             "items": {
               "properties": {
                 "at": {
                   "format": "date-time",
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "assignee": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "acknowledgements": {
             "items": {
               "properties": {
                 "at": {
                   "format": "date-time",
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "acknowledger": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "last_status_change_at": {
             "format": "date-time",
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "last_status_change_by": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "first_trigger_log_entry": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "escalation_policy": {
             "properties": {
               "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "type": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "summary": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "self": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "html_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "teams": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "urgency": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": ["null", "string"]
           },
           "conference_bridge": {
             "properties": {
               "conference_number": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               },
               "conference_url": {
-                "type": [
-                  "null",
-                  "string"
-                ]
+                "type": ["null", "string"]
               }
             },
-            "type": [
-              "null",
-              "object"
-            ]
+            "type": ["null", "object"]
           },
           "log_entries": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "created_at": {
                   "format": "date-time",
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "agent": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "channel": {
                   "properties": {
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "incident": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "teams": {
                   "items": {
                     "properties": {
                       "id": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "type": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "summary": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "self": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       },
                       "html_url": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
+                        "type": ["null", "string"]
                       }
                     },
-                    "type": [
-                      "null",
-                      "object"
-                    ]
+                    "type": ["null", "object"]
                   },
-                  "type": [
-                    "null",
-                    "array"
-                  ]
+                  "type": ["null", "array"]
                 },
                 "event_details": {
                   "properties": {
                     "description": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           },
           "alerts": {
             "items": {
               "properties": {
                 "id": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "summary": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "self": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "html_url": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "created_at": {
                   "format": "date-time",
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "status": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "alert_key": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "service": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "body": {
                   "properties": {
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "contexts": {
                       "items": {
                         "properties": {
                           "type": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
+                            "type": ["null", "string"]
                           },
                           "href": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
+                            "type": ["null", "string"]
                           },
                           "src": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
+                            "type": ["null", "string"]
                           },
                           "text": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
+                            "type": ["null", "string"]
                           }
                         },
-                        "type": [
-                          "null",
-                          "object"
-                        ]
+                        "type": ["null", "object"]
                       },
-                      "type": [
-                        "null",
-                        "array"
-                      ]
+                      "type": ["null", "array"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "incident": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 },
                 "suppressed": {
-                  "type": [
-                    "null",
-                    "boolean"
-                  ]
+                  "type": ["null", "boolean"]
                 },
                 "severity": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "type": ["null", "string"]
                 },
                 "integration": {
                   "properties": {
                     "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "summary": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "type": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "self": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "html_url": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "name": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
+                      "type": ["null", "string"]
                     },
                     "service": {
                       "properties": {
                         "id": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
+                          "type": ["null", "string"]
                         },
                         "summary": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
+                          "type": ["null", "string"]
                         },
                         "type": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
+                          "type": ["null", "string"]
                         },
                         "self": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
+                          "type": ["null", "string"]
                         },
                         "html_url": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
+                          "type": ["null", "string"]
                         }
                       },
-                      "type": [
-                        "null",
-                        "object"
-                      ]
+                      "type": ["null", "object"]
                     }
                   },
-                  "type": [
-                    "null",
-                    "object"
-                  ]
+                  "type": ["null", "object"]
                 }
               },
-              "type": [
-                "null",
-                "object"
-              ]
+              "type": ["null", "object"]
             },
-            "type": [
-              "null",
-              "array"
-            ]
+            "type": ["null", "array"]
           }
         },
-        "type": [
-          "null",
-          "object"
-        ],
+        "type": ["null", "object"],
         "additionalProperties": false
       },
       "stream": "incidents",
@@ -2911,215 +1692,144 @@
           "metadata": {
             "table-key-properties": "id",
             "forced-replication-method": "FULL_TABLE",
-            "valid-replication-keys": [
-              "last_status_change_at"
-            ],
+            "valid-replication-keys": ["last_status_change_at"],
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "id"
-          ],
+          "breadcrumb": ["properties", "id"],
           "metadata": {
             "inclusion": "automatic"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "type"
-          ],
+          "breadcrumb": ["properties", "type"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "summary"
-          ],
+          "breadcrumb": ["properties", "summary"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "self"
-          ],
+          "breadcrumb": ["properties", "self"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "html_url"
-          ],
+          "breadcrumb": ["properties", "html_url"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "incident_number"
-          ],
+          "breadcrumb": ["properties", "incident_number"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "created_at"
-          ],
+          "breadcrumb": ["properties", "created_at"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "status"
-          ],
+          "breadcrumb": ["properties", "status"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "title"
-          ],
+          "breadcrumb": ["properties", "title"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "incident_key"
-          ],
+          "breadcrumb": ["properties", "incident_key"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "service"
-          ],
+          "breadcrumb": ["properties", "service"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "priority"
-          ],
+          "breadcrumb": ["properties", "priority"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "assignments"
-          ],
+          "breadcrumb": ["properties", "assignments"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "acknowledgements"
-          ],
+          "breadcrumb": ["properties", "acknowledgements"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "last_status_change_at"
-          ],
+          "breadcrumb": ["properties", "last_status_change_at"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "last_status_change_by"
-          ],
+          "breadcrumb": ["properties", "last_status_change_by"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "first_trigger_log_entry"
-          ],
+          "breadcrumb": ["properties", "first_trigger_log_entry"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "escalation_policy"
-          ],
+          "breadcrumb": ["properties", "escalation_policy"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "teams"
-          ],
+          "breadcrumb": ["properties", "teams"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "urgency"
-          ],
+          "breadcrumb": ["properties", "urgency"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "conference_bridge"
-          ],
+          "breadcrumb": ["properties", "conference_bridge"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "log_entries"
-          ],
+          "breadcrumb": ["properties", "log_entries"],
           "metadata": {
             "inclusion": "available"
           }
         },
         {
-          "breadcrumb": [
-            "properties",
-            "alerts"
-          ],
+          "breadcrumb": ["properties", "alerts"],
           "metadata": {
             "inclusion": "available"
           }

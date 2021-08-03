@@ -2,11 +2,16 @@
   "type": ["null", "object"],
   "additionalProperties": false,
   "properties": {
-    "start": {
+    "id": {
       "type": ["null", "string"]
     },
+    "start": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
     "end": {
-      "type": ["null", "string"]
+      "type": ["null", "string"],
+      "format": "date-time"
     },
     "escalation_level": {
       "type": ["null", "integer"]

@@ -491,6 +491,9 @@ class OncallsStream(PagerdutyStream):
                             # Check invalid oncall record
                             if (not record.get(self.replication_key)):
                                 continue
+                            # Create unique singer id to avoid duplication
+                            record['id'] = record['schedule']['id'] + \
+                                record['start'] + record['end']
                             # Record timestamp
                             record_replication_key_dtime = parser.parse(
                                 record.get(self.replication_key))
