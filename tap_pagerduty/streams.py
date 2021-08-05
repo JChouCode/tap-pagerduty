@@ -469,7 +469,7 @@ class OncallsStream(PagerdutyStream):
         until_dtime = parser.parse(self.params.get("until"))
 
         # Max request range limit for PagerDuty API
-        request_range_limit = timedelta(days=179)
+        request_range_limit = timedelta(days=89)
 
         # Bookmark for this run
         running_bookmark_dtime = None
