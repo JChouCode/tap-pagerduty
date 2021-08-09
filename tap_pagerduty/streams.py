@@ -158,7 +158,7 @@ class IncidentsStream(PagerdutyStream):
     key_properties: ClassVar[str] = 'id'
     replication_key: ClassVar[str] = 'last_status_change_at'
     valid_replication_keys: ClassVar[List[str]] = ['last_status_change_at']
-    replication_method: ClassVar[str] = 'FULL_TABLE'
+    replication_method: ClassVar[str] = 'INCREMENTAL'
     valid_params: ClassVar[List[str]] = [
         'since',
         'until',
