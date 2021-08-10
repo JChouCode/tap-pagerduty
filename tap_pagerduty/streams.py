@@ -156,8 +156,8 @@ class IncidentsStream(PagerdutyStream):
     tap_stream_id: ClassVar[str] = 'incidents'
     stream: ClassVar[str] = 'incidents'
     key_properties: ClassVar[str] = 'id'
-    replication_key: ClassVar[str] = 'last_status_change_at'
-    valid_replication_keys: ClassVar[List[str]] = ['last_status_change_at']
+    replication_key: ClassVar[str] = 'created_at'
+    valid_replication_keys: ClassVar[List[str]] = ['created_at']
     replication_method: ClassVar[str] = 'INCREMENTAL'
     valid_params: ClassVar[List[str]] = [
         'since',
@@ -173,7 +173,7 @@ class IncidentsStream(PagerdutyStream):
         'sort_by',
         'include[]'
     ]
-    required_params: ClassVar[List[str]] = ['until']
+    required_params: ClassVar[List[str]] = ['since', 'until']
 
     def __init__(self, config, state, **kwargs):
         super().__init__(config, state)
@@ -222,7 +222,6 @@ class IncidentsStream(PagerdutyStream):
                             for page in self._list_resource(url_suffix=f"/{self.tap_stream_id}/{record.get('id')}/alerts", params=substream_params):
                                 record['alerts'].extend(page.get('alerts'))
 
-                            if self.replication_method == 'INCREMENTAL':
                                 if (current_bookmark_dtime is None) or (record_replication_key_dtime >= current_bookmark_dtime):
                                     with singer.Transformer() as transformer:
                                         transformed_record = transformer.transform(
@@ -232,17 +231,9 @@ class IncidentsStream(PagerdutyStream):
                                         counter.increment()
                                         running_bookmark_dtime = self.update_bookmark(
                                             running_bookmark_dtime, record_replication_key_dtime)
-                            else:
-                                with singer.Transformer() as transformer:
-                                    transformed_record = transformer.transform(
-                                        data=record, schema=self.schema)
-                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(
-                                    ), record=transformed_record)
-                                    counter.increment()
 
                     since_dtime += request_range_limit
 
-        if self.replication_method == 'INCREMENTAL':
             running_bookmark_str = running_bookmark_dtime.isoformat()
             singer.bookmarks.write_bookmark(state=self.state,
                                             tap_stream_id=self.tap_stream_id,
