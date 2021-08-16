@@ -191,7 +191,7 @@ class IncidentsStream(PagerdutyStream):
 
         since_dtime = parser.parse(self.params.get("since"))
         until_dtime = parser.parse(self.params.get("until"))
-        request_range_limit = timedelta(days=29)
+        request_range_limit = timedelta(days=7)
 
         running_bookmark_dtime = None
         with singer.metrics.job_timer(job_type=f"list_{self.tap_stream_id}"):
