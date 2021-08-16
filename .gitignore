@@ -3,8 +3,7 @@ config/
 catalog.json
 state.json
 
-#Mac
-
+# Mac
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
