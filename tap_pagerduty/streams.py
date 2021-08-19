@@ -189,7 +189,8 @@ class IncidentsStream(PagerdutyStream):
         else:
             current_bookmark_dtime = None
 
-        since_dtime = parser.parse(self.params.get("since"))
+        # Incidents stream has since param for pagination, may as well take advantage of that to skip unnecessary parsing
+        since_dtime = current_bookmark_dtime if current_bookmark_dtime else parser.parse(self.params.get("since"))
         until_dtime = parser.parse(self.params.get("until"))
         request_range_limit = timedelta(days=7)
 
@@ -328,7 +329,8 @@ class NotificationsStream(PagerdutyStream):
         else:
             current_bookmark_dtime = None
 
-        since_dtime = parser.parse(self.params.get("since"))
+        # Incidents stream has since param for pagination, may as well take advantage of that to skip unnecessary parsing
+        since_dtime = current_bookmark_dtime if current_bookmark_dtime else parser.parse(self.params.get("since"))
         until_dtime = parser.parse(self.params.get("until"))
         request_range_limit = timedelta(days=89)
 
@@ -455,8 +457,8 @@ class OncallsStream(PagerdutyStream):
         else:
             current_bookmark_dtime = None
 
-        # Get since, until as datetime
-        since_dtime = parser.parse(self.params.get("since"))
+        # Incidents stream has since param for pagination, may as well take advantage of that to skip unnecessary parsing
+        since_dtime = current_bookmark_dtime if current_bookmark_dtime else parser.parse(self.params.get("since"))
         until_dtime = parser.parse(self.params.get("until"))
 
         # Max request range limit for PagerDuty API
